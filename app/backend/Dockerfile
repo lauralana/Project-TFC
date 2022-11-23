@@ -4,5 +4,4 @@ EXPOSE 3001
 COPY package* ./
 RUN npm install
 COPY . . 
-RUN npm run build
-CMD ["npm", "run", "dev"]
+ENTRYPOINT ["npm", "run", "dev"]
