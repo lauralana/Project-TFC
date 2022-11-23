@@ -3,6 +3,7 @@ export interface ILogin {
   password: string,
 }
 
-export interface Id extends ILogin {
-  id: number,
+export interface Response {
+  status: number;
+  message: { message: string };
 }
