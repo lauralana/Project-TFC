@@ -8,4 +8,11 @@ const insertLoginController = async (req: Request, res: Response) => {
   return res.status(status).json(message);
 };
 
-export default { insertLoginController };
+const getLoginController = async (req: Request, res: Response) => {
+  const token = req.header('authorization') as string;
+  const { status, message } = await loginService.getLoginService(token);
+
+  return res.status(status).json(message);
+};
+
+export default { insertLoginController, getLoginController };

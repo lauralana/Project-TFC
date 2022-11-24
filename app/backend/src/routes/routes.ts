@@ -9,5 +9,5 @@ const route = express.Router();
 
 // rota dos verbos
 route.post('/login', login.insertLoginController);
-
+route.get('/login/validate', login.getLoginController);
 export default route;

@@ -15,8 +15,9 @@ const generateToken = (id: number) => {
 
 const verifyToken = (token: string) => {
   try {
-    const tokenVerify = JWT.verify(token, jwtSecret);
-    return tokenVerify;
+    // { data: { id: 1 }, iat: 1669304180, exp: 1669908980 }
+    const tokenVerify = JWT.verify(token, jwtSecret) as { data: { id: number } };
+    return tokenVerify.data.id;
   } catch (error) {
     return false;
   }
