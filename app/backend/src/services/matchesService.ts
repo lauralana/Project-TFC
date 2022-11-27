@@ -30,12 +30,18 @@ const updateMatchesService = async (body: ITeamMatche, id: number) => {
 
   return { status: 200, message: { message: 'Finished' } };
 };
+const updateCurrentMatches = async (body: ITeamMatche, id: number) => {
+  await matchesModel.update({ ...body }, { where: { id } });
+
+  return { status: 200, message: { message: 'Matche updated' } };
+};
 
 export default {
   getAllMatchesService,
   getMatchesInProgress,
   insertMatchesService,
   updateMatchesService,
+  updateCurrentMatches,
 };
 
 // matches {
