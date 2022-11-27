@@ -20,6 +20,10 @@ const insertMatchesController = async (req: Request, res: Response) => {
   if (!token) {
     return res.status(401).json({ message: 'Token must be a valid token' });
   }
+  if (newMatche.homeTeam === newMatche.awayTeam) {
+    return res.status(422).json({ message:
+        'It is not possible to create a match with two equal teams' });
+  }
   return res.status(status).json(message);
 };
 
