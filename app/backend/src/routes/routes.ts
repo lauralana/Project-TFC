@@ -4,7 +4,9 @@ import * as express from 'express';
 import login from '../controllers/loginController';
 import teams from '../controllers/teamsController';
 import matches from '../controllers/matchesController';
+
 // rota com as funções de validação
+import validate from '../middleware/validateToken';
 
 const route = express.Router();
 
@@ -16,6 +18,7 @@ route.get('/teams', teams.getAllTeamsController);
 route.get('/teams/:id', teams.getTeamsByIdController);
 
 route.get('/matches', matches.getAllMatchesController);
-route.post('/matches', matches.insertMatchesController);
+route.post('/matches', validate.validateToken, matches.insertMatchesController);
 route.patch('/matches/:id/finish', matches.updateMatchesController);
+
 export default route;

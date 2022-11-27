@@ -19,7 +19,7 @@ const insertMatchesController = async (req: Request, res: Response) => {
   const newMatche = req.body;
   const { status, message } = await matchesService.insertMatchesService(newMatche);
   if (!token) {
-    return res.status(401).json({ message: 'Token must be a valid token' });
+    return res.status(404).json({ message: 'Unable to find token' });
   }
   if (newMatche.homeTeam === newMatche.awayTeam) {
     return res.status(422).json({ message:
