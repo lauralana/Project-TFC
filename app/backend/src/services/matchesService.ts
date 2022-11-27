@@ -1,3 +1,4 @@
+import { ITeamMatche } from '../Interface/ITeams';
 import TeamsModel from '../database/models/TeamsModel';
 import matchesModel from '../database/models/MatchesModel';
 
@@ -18,7 +19,13 @@ const getMatchesInProgress = async (param: boolean) => {
   return { status: 200, message: filterMatches };
 };
 
-export default { getAllMatchesService, getMatchesInProgress };
+const insertMatchesService = async (body: ITeamMatche) => {
+  const newMatche = await matchesModel.create({ ...body, inProgress: true });
+
+  return { status: 201, message: newMatche.dataValues };
+};
+
+export default { getAllMatchesService, getMatchesInProgress, insertMatchesService };
 
 // matches {
 //          dataValues: [Object],

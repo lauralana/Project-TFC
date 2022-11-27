@@ -13,4 +13,14 @@ const getAllMatchesController = async (req: Request, res: Response) => {
   return res.status(getAll.status).json(getAll.message);
 };
 
-export default { getAllMatchesController };
+const insertMatchesController = async (req: Request, res: Response) => {
+  const token = req.header('authorization') as string;
+  const newMatche = req.body;
+  const { status, message } = await matchesService.insertMatchesService(newMatche);
+  if (!token) {
+    return res.status(401).json({ message: 'Token must be a valid token' });
+  }
+  return res.status(status).json(message);
+};
+
+export default { getAllMatchesController, insertMatchesController };
