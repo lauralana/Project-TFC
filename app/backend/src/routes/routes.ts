@@ -16,4 +16,5 @@ route.get('/teams', teams.getAllTeamsController);
 route.get('/teams/:id', teams.getTeamsByIdController);
 
 route.get('/matches', matches.getAllMatchesController);
+route.get('/matches', matches.getMatchesInProgress);
 export default route;
