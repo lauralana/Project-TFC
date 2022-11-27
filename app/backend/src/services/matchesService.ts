@@ -25,7 +25,18 @@ const insertMatchesService = async (body: ITeamMatche) => {
   return { status: 201, message: newMatche.dataValues };
 };
 
-export default { getAllMatchesService, getMatchesInProgress, insertMatchesService };
+const updateMatchesService = async (body: ITeamMatche, id: number) => {
+  await matchesModel.update({ ...body, inProgress: false }, { where: { id } });
+
+  return { status: 200, message: { message: 'Finished' } };
+};
+
+export default {
+  getAllMatchesService,
+  getMatchesInProgress,
+  insertMatchesService,
+  updateMatchesService,
+};
 
 // matches {
 //          dataValues: [Object],
