@@ -11,28 +11,10 @@ const getAllMatchesService = async () => {
   return { status: 200, message: getAll };
 };
 
-// const getMatchesInProgress = async (id: number) => {
-//   const inProgressT = await matchesModel.findAll({ where: { id } });
-//   console.log(inProgressT);
-//   const filterMatches = inProgressT.filter((element) => element.inProgress === true);
-//   // console.log(filterMatches);
-//   return { status: 200, message: filterMatches };
-// };
-
-// const getMatchesInProgress = async () => {
-//   const inProgressT = await matchesModel.findAll();
-//   console.log(inProgressT);
-//   const filterMatches = Promise.all(inProgressT
-//     .filter((element) => element.dataValues.inProgress === true));
-//   console.log(filterMatches);
-//   return { status: 200, message: filterMatches };
-// };
-
-const getMatchesInProgress = async () => {
-  const inProgressT = await matchesModel.findAll();
-  console.log(inProgressT);
-  const filterMatches = inProgressT.filter((element) => element.dataValues.inProgress === true);
-  console.log(filterMatches);
+const getMatchesInProgress = async (param: boolean) => {
+  const inProgress = await getAllMatchesService();
+  const filterMatches = inProgress.message
+    .filter((element) => element.dataValues.inProgress === param);
   return { status: 200, message: filterMatches };
 };
 
