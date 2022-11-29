@@ -1,10 +1,16 @@
 import { Request, Response } from 'express';
-import teamsService from '../services/leaderboardService';
+import leaderboardService from '../services/leaderboardService';
 
-const getLeaderboard = async (_req: Request, res: Response) => {
-  const allTeams = await teamsService.getLeaderboard();
+const getHomeTeamBoard = async (_req: Request, res: Response) => {
+  const homeTeams = await leaderboardService.getHomeTeamBoard();
 
-  return res.status(allTeams.status).json(allTeams.message);
+  return res.status(homeTeams.status).json(homeTeams.message);
 };
 
-export default { getLeaderboard };
+const getAwayTeamBoard = async (_req: Request, res: Response) => {
+  const awayTeams = await leaderboardService.getAwayTeamBoard();
+
+  return res.status(awayTeams.status).json(awayTeams.message);
+};
+
+export default { getHomeTeamBoard, getAwayTeamBoard };

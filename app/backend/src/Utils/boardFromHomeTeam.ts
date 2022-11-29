@@ -45,8 +45,4 @@ const leaderboard = (matchesHome: any, teamName: string) => {
   return obj;
 };
 
-// const orderBoard = () => {
-//   const boardInfo =
-// };
-
 export default leaderboard;

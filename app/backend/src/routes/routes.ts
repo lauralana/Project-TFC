@@ -22,5 +22,6 @@ route.post('/matches', validate.validateToken, matches.insertMatchesController);
 route.patch('/matches/:id/finish', matches.updateMatchesController);
 route.patch('/matches/:id', matches.updateCurrentMatches);
 
-route.get('/leaderboard/home', leaderboard.getLeaderboard);
+route.get('/leaderboard/home', leaderboard.getHomeTeamBoard);
+route.get('/leaderboard/away', leaderboard.getAwayTeamBoard);
 export default route;
