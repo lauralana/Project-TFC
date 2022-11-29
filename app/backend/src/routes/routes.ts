@@ -4,7 +4,7 @@ import * as express from 'express';
 import login from '../controllers/loginController';
 import teams from '../controllers/teamsController';
 import matches from '../controllers/matchesController';
-
+import leaderboard from '../controllers/leaderboardController';
 // rota com as funções de validação
 import validate from '../middleware/validateToken';
 
@@ -22,4 +22,5 @@ route.post('/matches', validate.validateToken, matches.insertMatchesController);
 route.patch('/matches/:id/finish', matches.updateMatchesController);
 route.patch('/matches/:id', matches.updateCurrentMatches);
 
+route.get('/leaderboard/home', leaderboard.getLeaderboard);
 export default route;
