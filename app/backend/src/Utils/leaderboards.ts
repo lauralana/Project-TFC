@@ -5,7 +5,7 @@ const getScore = (matchesHome: any) => {
       totalPoints += 3;
       totalVictories += 1;
     }
-    if (team.homeTeamGoals > team.awayTeamGoals) {
+    if (team.homeTeamGoals < team.awayTeamGoals) {
       totalLosses += 1;
     }
     if (team.homeTeamGoals === team.awayTeamGoals) {
@@ -40,7 +40,7 @@ const leaderboard = (matchesHome: any, teamName: string) => {
     goalsFavor: getBalance(matchesHome).goalsFavor,
     goalsOwn: getBalance(matchesHome).goalsOwn,
     goalsBalance: getBalance(matchesHome).goalsBalance,
-    efficiency: getPercentage(matchesHome.totalPoints, matchesHome.totalGames),
+    efficiency: getPercentage(getScore(matchesHome).totalPoints, matchesHome.length),
   };
   return obj;
 };
@@ -48,3 +48,5 @@ const leaderboard = (matchesHome: any, teamName: string) => {
 // const orderBoard = () => {
 //   const boardInfo =
 // };
+
+export default leaderboard;
