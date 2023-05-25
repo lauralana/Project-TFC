@@ -27,7 +27,7 @@ Trybe Futebol Clube é uma aplicação Full Stack que permite ao usuário ter ac
 
 OBS.: Os arquivos presentes na pasta front-end foram disponibilizados pela Trybe para a realização deste projeto.
 
-## Execução
+## Execução :
 ⚠️ Todos os comandos descritos abaixo devem ser executados no terminal dentro da pasta raíz do projeto, após ser feito o clone do repositório com o comando `git clone git@github.com:lauralana/Project-TFC.git`  
 
 <details>
